@@ -23,15 +23,18 @@ todoInput.addEventListener("keypress", function (event) {
 
 // Function to delete an item from the list
 function deleteTodoItem(id) {
+  // Filter the list to remove the item with the matching id
   todoList = todoList.filter(function (item) {
     return item.id !== id;
   });
+  // Saves the list to local storage
   localStorage.setItem("todoList", JSON.stringify(todoList));
   render();
 }
 
 // Function to add item to the list and then call the render function
 function addTodoItem() {
+  // Stop if the input is empty
   if (todoInput.value.trim() === "") {
     todoInput.focus();
     todoInput.value = "";
@@ -41,13 +44,14 @@ function addTodoItem() {
   todoList.push({ id: crypto.randomUUID(), text: todoInput.value });
   // Clears the input field
   todoInput.value = "";
+  // Sets focus back to the input field
   todoInput.focus();
+  // Saves the list to local storage
   localStorage.setItem("todoList", JSON.stringify(todoList));
   render();
 }
 
-// Function to get the array of HTML strings for each list item
-// This array is supplied to the render method to render the list
+// Function to get the array of HTML strings for each list item and supply it to the render function
 function getTodoItems() {
   // Stop if the list is empty
   if (todoList.length === 0) return;
