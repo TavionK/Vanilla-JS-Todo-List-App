@@ -65,7 +65,6 @@ function getLocalStorage() {
   // Return if there is no local storage
   if (localStorage.getItem("todoList") === null) return;
   todoList = JSON.parse(localStorage.getItem("todoList"));
-  // console.log(items);
 }
 
 // Function to render the list to the screen
