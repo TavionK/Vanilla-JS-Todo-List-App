@@ -1,17 +1,26 @@
 let listArea = document.getElementById("list-area");
 let addBtn = document.getElementById("add-btn");
+let todoInput = document.getElementById("todo-input");
 
 // List of todos that will be added to and rendered
 let todoList = ["Buy milk", "Feed the cat", "Clean the house"];
 
-// Event listener for the add button
+// Event listener for the addBtn button
 addBtn.addEventListener("click", addTodoItem);
+
+// If the user presses enter, add the item to the list
+todoInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    addTodoItem();
+  }
+});
 
 // Function to add item to the list and then call the render function
 function addTodoItem() {
-  todoList.push(document.getElementById("todo-input").value);
+  todoList.push(todoInput.value);
   // Clears the input field
-  document.getElementById("todo-input").value = "";
+  todoInput.value = "";
+  todoInput.focus();
   render();
 }
 
