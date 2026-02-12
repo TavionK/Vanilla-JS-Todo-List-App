@@ -5,13 +5,20 @@ let todoInput = document.getElementById("todo-input");
 // Array of item objects that will be added to and rendered
 let todoList = [{ id: crypto.randomUUID(), text: "Buy milk" }];
 
-// Event listener for the addBtn button
-addBtn.addEventListener("click", addTodoItem);
-
 // Event listener to get the id of the clicked item
 document.addEventListener("click", function (event) {
   if (event.target.closest("button") === null) return;
   deleteTodoItem(event.target.closest("button").getAttribute("data-id"));
+});
+
+// Event listener for the addBtn button
+addBtn.addEventListener("click", addTodoItem);
+
+// If the user presses enter, add the item to the list
+todoInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    addTodoItem();
+  }
 });
 
 function deleteTodoItem(id) {
@@ -20,13 +27,6 @@ function deleteTodoItem(id) {
   });
   render();
 }
-
-// If the user presses enter, add the item to the list
-todoInput.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    addTodoItem();
-  }
-});
 
 // Function to add item to the list and then call the render function
 function addTodoItem() {
