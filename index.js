@@ -21,14 +21,6 @@ todoInput.addEventListener("keypress", function (event) {
   }
 });
 
-// Function to get the items from local storage
-function getLocalStorage() {
-  // Return if there is no local storage
-  if (localStorage.getItem("todoList") === null) return;
-  todoList = JSON.parse(localStorage.getItem("todoList"));
-  // console.log(items);
-}
-
 // Function to delete an item from the list
 function deleteTodoItem(id) {
   todoList = todoList.filter(function (item) {
@@ -68,11 +60,20 @@ function getTodoItems() {
   });
 }
 
+// Function to get the items from local storage
+function getLocalStorage() {
+  // Return if there is no local storage
+  if (localStorage.getItem("todoList") === null) return;
+  todoList = JSON.parse(localStorage.getItem("todoList"));
+  // console.log(items);
+}
+
 // Function to render the list to the screen
 function render() {
   if (todoList.length === 0) return;
   listArea.innerHTML = getTodoItems().join("");
 }
 
+// Load the items from local storage and render the list upon loading
 getLocalStorage();
 render();
