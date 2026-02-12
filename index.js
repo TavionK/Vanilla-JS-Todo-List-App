@@ -2,8 +2,8 @@ let listArea = document.getElementById("list-area");
 let addBtn = document.getElementById("add-btn");
 let todoInput = document.getElementById("todo-input");
 
-// List of todos that will be added to and rendered
-let todoList = ["Buy milk", "Feed the cat", "Clean the house"];
+// Array of todo objects that will be added to and rendered
+let todoList = [{ id: crypto.randomUUID(), text: "Buy milk" }];
 
 // Event listener for the addBtn button
 addBtn.addEventListener("click", addTodoItem);
@@ -17,7 +17,8 @@ todoInput.addEventListener("keypress", function (event) {
 
 // Function to add item to the list and then call the render function
 function addTodoItem() {
-  todoList.push(todoInput.value);
+  // creates random id and adds the object to the todoList array
+  todoList.push({ id: crypto.randomUUID(), text: todoInput.value });
   // Clears the input field
   todoInput.value = "";
   todoInput.focus();
@@ -28,7 +29,7 @@ function addTodoItem() {
 // This array is supplied to the render method to render the list
 function getTodoItems() {
   return todoList.map(function (item) {
-    return `<li>${item}</li>`;
+    return `<li>${item.text}</li>`;
   });
 }
 
