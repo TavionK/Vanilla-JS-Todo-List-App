@@ -2,7 +2,7 @@ let listArea = document.getElementById("list-area");
 let addBtn = document.getElementById("add-btn");
 let todoInput = document.getElementById("todo-input");
 
-// Array of todo objects that will be added to and rendered
+// Array of item objects that will be added to and rendered
 let todoList = [{ id: crypto.randomUUID(), text: "Buy milk" }];
 
 // Event listener for the addBtn button
