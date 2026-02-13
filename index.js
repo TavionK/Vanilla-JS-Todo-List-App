@@ -66,14 +66,15 @@ function getTodoItems() {
 
 // Function to get the items from local storage
 function getLocalStorage() {
+  const stored = localStorage.getItem("todoList");
   // Return if there is no local storage
-  if (localStorage.getItem("todoList") === null) return;
-  todoList = JSON.parse(localStorage.getItem("todoList"));
+  if (stored === null) return;
+  todoList = JSON.parse(stored);
 }
 
 // Function to render the list to the screen
 function render() {
-  if (todoList.length === 0) return;
+  if (todoList.length === 0) listArea.innerHTML = "";
   listArea.innerHTML = getTodoItems().join("");
 }
 
