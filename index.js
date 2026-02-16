@@ -61,7 +61,10 @@ function getTodoItems() {
     return `
     <li>
         ${item.text}
-        <button data-id="${item.id}" class="btn" id="btn" aria-label="delete todo item"><span aria-hidden="true">x</span></button>
+        <div class="btn-container">
+            <button data-id="${item.id}" class="btn btn-complete" id="btn" aria-label="mark todo item as complete"><span aria-hidden="true">C</span></button>
+            <button data-id="${item.id}" class="btn btn-delete" id="btn" aria-label="delete todo item"><span aria-hidden="true">x</span></button>
+        </div>
     </li>`;
   });
 }
