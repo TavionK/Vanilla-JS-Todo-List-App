@@ -42,6 +42,10 @@ function addTodoItem() {
     todoInput.placeholder = "Please input a valid item";
     return;
   }
+  if (todoInput.classList.contains("input-error")) {
+    todoInput.classList.remove("input-error");
+    todoInput.placeholder = "Add Item";
+  }
   // creates random id and adds the object to the todoList array
   todoList.push({ id: crypto.randomUUID(), text: todoInput.value });
   // Clears the input field
