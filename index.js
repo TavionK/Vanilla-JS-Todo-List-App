@@ -4,11 +4,18 @@ let todoInput = document.getElementById("todo-input");
 
 // Array of item objects that will be added to and rendered
 let todoList = [];
+let completedList = [];
 
 // Event listener to get the id of the clicked item
 document.addEventListener("click", function (event) {
+  // Return if the target is not a button
   if (event.target.closest("button") === null) return;
-  deleteTodoItem(event.target.closest("button").getAttribute("data-id"));
+  // Check if the button is the complete or delete button
+  if (event.target.closest("button").classList.contains("btn-complete")) {
+    completeTodoItem(event.target.closest("button").getAttribute("data-id"));
+  } else {
+    deleteTodoItem(event.target.closest("button").getAttribute("data-id"));
+  }
 });
 
 // Event listener for the addBtn button
@@ -32,6 +39,25 @@ function deleteTodoItem(id) {
   render();
 }
 
+function completeTodoItem(id) {
+  console.log("Completed button clicked");
+  // Add the item with the matching id to the completed list
+  for (let i = 0; i < todoList.length; i++) {
+    if (todoList[i].id === id) {
+      completedList.push(todoList[i]);
+    }
+  }
+  // Save the completed list to local storage
+  localStorage.setItem("completedList", JSON.stringify(completedList));
+  // Remove the item from the todoList
+  todoList = todoList.filter(function (item) {
+    return item.id !== id;
+  });
+  // Saves the updated list to local storage
+  localStorage.setItem("todoList", JSON.stringify(todoList));
+  render();
+}
+
 // Function to add item to the list and then call the render function
 function addTodoItem() {
   // Stop if the input is empty
@@ -42,6 +68,7 @@ function addTodoItem() {
     todoInput.placeholder = "Please input a valid item";
     return;
   }
+  // Remove the error classes if they exist
   if (todoInput.classList.contains("input-error")) {
     todoInput.classList.remove("input-error");
     todoInput.placeholder = "Add Item";

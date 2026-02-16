@@ -76,6 +76,10 @@ input {
     font-size: 1.25rem;
 }
 
+.btn-complete {
+    background-color: green;
+}
+
 /*Lists*/
 ul li{
     list-style: none;
