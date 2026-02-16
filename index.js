@@ -38,6 +38,8 @@ function addTodoItem() {
   if (todoInput.value.trim() === "") {
     todoInput.focus();
     todoInput.value = "";
+    // #todo replace this alert with css styling to notify the user
+    alert("Please enter a valid todo item.");
     return;
   }
   // creates random id and adds the object to the todoList array
@@ -59,7 +61,7 @@ function getTodoItems() {
     return `
     <li>
         ${item.text}
-        <button data-id="${item.id}" id="btn" aria-label="delete todo item"><span aria-hidden="true">x</span></button>
+        <button data-id="${item.id}" class="btn" id="btn" aria-label="delete todo item"><span aria-hidden="true">x</span></button>
     </li>`;
   });
 }
@@ -74,7 +76,10 @@ function getLocalStorage() {
 
 // Function to render the list to the screen
 function render() {
-  if (todoList.length === 0) listArea.innerHTML = "";
+  if (todoList.length === 0) {
+    listArea.innerHTML = "";
+    return;
+  }
   listArea.innerHTML = getTodoItems().join("");
 }
 

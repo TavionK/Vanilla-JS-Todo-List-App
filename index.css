@@ -12,3 +12,33 @@ body {
     line-height: 1.6;
     background-color: #f4f4f4;
 }
+
+/*Typography*/
+h1 {
+    text-align: center;
+}
+
+/*Layout*/
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    border:2px solid blue;
+    margin: 0 auto;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+/*Button*/
+.btn {
+    border: none;
+    outline: none;
+    padding: .5rem .75rem;
+    border-radius: 5px;
+}
+
+.btn-add {
+    background-color: red;
+}
