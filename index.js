@@ -5,6 +5,7 @@ let todoInput = document.getElementById("todo-input");
 // Array of item objects that will be added to and rendered
 let todoList = [];
 let completedList = [];
+let deletedList = [];
 
 // Event listener to get the id of the clicked item
 document.addEventListener("click", function (event) {
@@ -30,31 +31,35 @@ todoInput.addEventListener("keypress", function (event) {
 
 // Function to delete an item from the list
 function deleteTodoItem(id) {
+  for (let i = 0; i < todoList.length; i++) {
+    if (todoList[i].id === id) {
+      deletedList.push(todoList[i]);
+    }
+  }
   // Filter the list to remove the item with the matching id
   todoList = todoList.filter(function (item) {
     return item.id !== id;
   });
   // Saves the list to local storage
   localStorage.setItem("todoList", JSON.stringify(todoList));
+  localStorage.setItem("deletedList", JSON.stringify(deletedList));
   render();
 }
 
 function completeTodoItem(id) {
-  console.log("Completed button clicked");
   // Add the item with the matching id to the completed list
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].id === id) {
       completedList.push(todoList[i]);
     }
   }
-  // Save the completed list to local storage
-  localStorage.setItem("completedList", JSON.stringify(completedList));
   // Remove the item from the todoList
   todoList = todoList.filter(function (item) {
     return item.id !== id;
   });
   // Saves the updated list to local storage
   localStorage.setItem("todoList", JSON.stringify(todoList));
+  localStorage.setItem("completedList", JSON.stringify(completedList));
   render();
 }
 
@@ -104,12 +109,16 @@ function getTodoItems() {
 function getLocalStorage() {
   const stored = localStorage.getItem("todoList");
   const completedStored = localStorage.getItem("completedList");
+  const deletedStored = localStorage.getItem("deletedList");
   // Return if there is no local storage
   if (stored !== null) {
     todoList = JSON.parse(stored);
   }
   if (completedStored !== null) {
     completedList = JSON.parse(completedStored);
+  }
+  if (deletedStored !== null) {
+    deletedList = JSON.parse(deletedStored);
   }
 }
 
