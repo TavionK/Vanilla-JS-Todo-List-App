@@ -98,8 +98,12 @@ function getTodoItems() {
     <li>
         ${item.text}
         <div class="btn-container">
-            <button data-id="${item.id}" class="btn btn-complete" id="btn" aria-label="mark todo item as complete"><span aria-hidden="true">C</span></button>
-            <button data-id="${item.id}" class="btn btn-delete" id="btn" aria-label="delete todo item"><span aria-hidden="true">x</span></button>
+            <button data-id="${item.id}" class="btn btn-complete" id="btn" aria-label="mark todo item as complete">
+                <img class="icon" src="./images/trash-solid-full.svg" alt="Trash can icon" />
+            </button>
+            <button data-id="${item.id}" class="btn btn-delete" id="btn" aria-label="delete todo item">
+                <img class="icon" src="./images/check-solid.svg" alt="Check mark icon">
+            </button>
         </div>
     </li>`;
   });
