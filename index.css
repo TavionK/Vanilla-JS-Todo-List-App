@@ -80,6 +80,10 @@ input {
     background-color: green;
 }
 
+.btn-delete {
+    background-color: red;
+}
+
 /*Lists*/
 ul li{
     list-style: none;

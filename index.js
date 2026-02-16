@@ -103,9 +103,14 @@ function getTodoItems() {
 // Function to get the items from local storage
 function getLocalStorage() {
   const stored = localStorage.getItem("todoList");
+  const completedStored = localStorage.getItem("completedList");
   // Return if there is no local storage
-  if (stored === null) return;
-  todoList = JSON.parse(stored);
+  if (stored !== null) {
+    todoList = JSON.parse(stored);
+  }
+  if (completedStored !== null) {
+    completedList = JSON.parse(completedStored);
+  }
 }
 
 // Function to render the list to the screen
