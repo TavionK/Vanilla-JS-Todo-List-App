@@ -38,8 +38,8 @@ function addTodoItem() {
   if (todoInput.value.trim() === "") {
     todoInput.focus();
     todoInput.value = "";
-    // #todo replace this alert with css styling to notify the user
-    alert("Please enter a valid todo item.");
+    todoInput.classList.add("input-error");
+    todoInput.placeholder = "Please input a valid item";
     return;
   }
   // creates random id and adds the object to the todoList array

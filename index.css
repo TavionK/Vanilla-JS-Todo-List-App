@@ -42,6 +42,11 @@ input {
     border: none;
 }
 
+.input-error {
+    border: 2px solid red;
+    outline: none;
+}
+
 
 
 /*Button*/
