@@ -42,6 +42,8 @@ input {
     border: none;
 }
 
+
+
 /*Button*/
 .btn {
     border: none;
@@ -49,6 +51,16 @@ input {
     padding: .5rem .75rem;
     border-radius: 5px;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.btn:hover, .btn:focus {
+    background-color: #ccc;
+}
+
+.btn:focus-visible {
+    outline: 2px solid red;
+    outline-offset: 2px;
 }
 
 .btn-primary {
