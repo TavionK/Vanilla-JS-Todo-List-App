@@ -16,19 +16,30 @@ body {
 /*Typography*/
 h1 {
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 /*Layout*/
 main {
-    display: flex;
-    flex-direction: column;
+
 }
 
 .card {
     border:2px solid blue;
     margin: 0 auto;
-    padding: 1em;
+    padding: 1em 2em;
     border-radius: 5px;
+    max-width: 400px;
+}
+
+/*Input*/
+input {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    border: none;
 }
 
 /*Button*/
@@ -37,8 +48,21 @@ main {
     outline: none;
     padding: .5rem .75rem;
     border-radius: 5px;
+    cursor: pointer;
 }
 
-.btn-add {
+.btn-primary {
+    display: block;
+    width: 100%;
+    margin: 1rem auto;
     background-color: red;
+    font-size: 1.25rem;
+}
+
+/*Lists*/
+ul li{
+    list-style: none;
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
 }
