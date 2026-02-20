@@ -1,11 +1,16 @@
-let listArea = document.getElementById("list-area");
-let addBtn = document.getElementById("add-btn");
-let todoInput = document.getElementById("todo-input");
+interface Todo {
+  id: string;
+  text: string;
+}
+
+const listArea = document.getElementById("list-area") as HTMLUListElement;
+const addBtn = document.getElementById("add-btn") as HTMLButtonElement;
+const todoInput = document.getElementById("todo-input") as HTMLInputElement;
 
 // Array of item objects that will be added to and rendered
-let todoList = [];
-let completedList = [];
-let deletedList = [];
+let todoList: Todo[] = [];
+let completedList: Todo[] = [];
+let deletedList: Todo[] = [];
 
 // Event listener to get the id of the clicked item
 document.addEventListener("click", function (event) {
@@ -30,14 +35,14 @@ todoInput.addEventListener("keypress", function (event) {
 });
 
 // Function to delete an item from the list
-function deleteTodoItem(id) {
+function deleteTodoItem(id: string): void {
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].id === id) {
       deletedList.push(todoList[i]);
     }
   }
   // Filter the list to remove the item with the matching id
-  todoList = todoList.filter(function (item) {
+  todoList = todoList.filter(function (item: Todo): boolean {
     return item.id !== id;
   });
   // Saves the list to local storage
@@ -46,7 +51,7 @@ function deleteTodoItem(id) {
   render();
 }
 
-function completeTodoItem(id) {
+function completeTodoItem(id: string): void {
   // Add the item with the matching id to the completed list
   for (let i = 0; i < todoList.length; i++) {
     if (todoList[i].id === id) {
@@ -54,7 +59,7 @@ function completeTodoItem(id) {
     }
   }
   // Remove the item from the todoList
-  todoList = todoList.filter(function (item) {
+  todoList = todoList.filter(function (item: Todo): boolean {
     return item.id !== id;
   });
   // Saves the updated list to local storage
@@ -64,7 +69,7 @@ function completeTodoItem(id) {
 }
 
 // Function to add item to the list and then call the render function
-function addTodoItem() {
+function addTodoItem(): void {
   // Stop if the input is empty
   if (todoInput.value.trim() === "") {
     todoInput.focus();
@@ -90,10 +95,10 @@ function addTodoItem() {
 }
 
 // Function to get the array of HTML strings for each list item and supply it to the render function
-function getTodoItems() {
+function getTodoItems(): string[] {
   // Stop if the list is empty
-  if (todoList.length === 0) return;
-  return todoList.map(function (item) {
+  if (todoList.length === 0) return [];
+  return todoList.map(function (item: Todo): string {
     return `
     <li>
         ${item.text}
@@ -110,13 +115,13 @@ function getTodoItems() {
 }
 
 // Function to get the items from local storage
-function getLocalStorage() {
-  const stored = localStorage.getItem("todoList");
-  const completedStored = localStorage.getItem("completedList");
-  const deletedStored = localStorage.getItem("deletedList");
+function getLocalStorage(): void {
+  const todoStored: string = localStorage.getItem("todoList");
+  const completedStored: string = localStorage.getItem("completedList");
+  const deletedStored: string = localStorage.getItem("deletedList");
   // Return if there is no local storage
-  if (stored !== null) {
-    todoList = JSON.parse(stored);
+  if (todoStored !== null) {
+    todoList = JSON.parse(todoStored);
   }
   if (completedStored !== null) {
     completedList = JSON.parse(completedStored);
@@ -127,7 +132,7 @@ function getLocalStorage() {
 }
 
 // Function to render the list to the screen
-function render() {
+function render(): void {
   if (todoList.length === 0) {
     listArea.innerHTML = "";
     return;
