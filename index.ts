@@ -13,14 +13,16 @@ let completedList: Todo[] = [];
 let deletedList: Todo[] = [];
 
 // Event listener to get the id of the clicked item
-document.addEventListener("click", function (event) {
+document.addEventListener("click", function (event: MouseEvent): void {
+  const target = event.target as Element;
+  const button = target.closest("button");
   // Return if the target is not a button
-  if (event.target.closest("button") === null) return;
+  if (button === null) return;
   // Check if the button is the complete or delete button
-  if (event.target.closest("button").classList.contains("btn-complete")) {
-    completeTodoItem(event.target.closest("button").getAttribute("data-id"));
+  if (button.classList.contains("btn-complete")) {
+    completeTodoItem(button.getAttribute("data-id") ?? "");
   } else {
-    deleteTodoItem(event.target.closest("button").getAttribute("data-id"));
+    deleteTodoItem(button.getAttribute("data-id") ?? "");
   }
 });
 
