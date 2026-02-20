@@ -116,9 +116,9 @@ function getTodoItems(): string[] {
 
 // Function to get the items from local storage
 function getLocalStorage(): void {
-  const todoStored: string = localStorage.getItem("todoList");
-  const completedStored: string = localStorage.getItem("completedList");
-  const deletedStored: string = localStorage.getItem("deletedList");
+  const todoStored: string | null = localStorage.getItem("todoList");
+  const completedStored: string | null = localStorage.getItem("completedList");
+  const deletedStored: string | null = localStorage.getItem("deletedList");
   // Return if there is no local storage
   if (todoStored !== null) {
     todoList = JSON.parse(todoStored);
