@@ -38,9 +38,9 @@ todoInput.addEventListener("keypress", function (event) {
 
 // Function to delete an item from the list
 function deleteTodoItem(id: string): void {
-  for (let i = 0; i < todoList.length; i++) {
-    if (todoList[i].id === id) {
-      deletedList.push(todoList[i]);
+  for (const item of todoList) {
+    if (item.id === id) {
+      deletedList.push(item);
     }
   }
   // Filter the list to remove the item with the matching id
@@ -55,9 +55,9 @@ function deleteTodoItem(id: string): void {
 
 function completeTodoItem(id: string): void {
   // Add the item with the matching id to the completed list
-  for (let i = 0; i < todoList.length; i++) {
-    if (todoList[i].id === id) {
-      completedList.push(todoList[i]);
+  for (const item of todoList) {
+    if (item.id === id) {
+      completedList.push(item);
     }
   }
   // Remove the item from the todoList
@@ -121,16 +121,10 @@ function getLocalStorage(): void {
   const todoStored: string | null = localStorage.getItem("todoList");
   const completedStored: string | null = localStorage.getItem("completedList");
   const deletedStored: string | null = localStorage.getItem("deletedList");
-  // Return if there is no local storage
-  if (todoStored !== null) {
-    todoList = JSON.parse(todoStored);
-  }
-  if (completedStored !== null) {
-    completedList = JSON.parse(completedStored);
-  }
-  if (deletedStored !== null) {
-    deletedList = JSON.parse(deletedStored);
-  }
+  // load the items from local storage if they exist
+  todoList = JSON.parse(todoStored ?? "[]");
+  completedList = JSON.parse(completedStored ?? "[]");
+  deletedList = JSON.parse(deletedStored ?? "[]");
 }
 
 // Function to render the list to the screen
