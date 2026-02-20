@@ -45,6 +45,7 @@ input {
     border-radius: 5px;
     border: none;
     font-size: 1.25rem;
+    color: oklch(0 none none);
 }
 
 input::placeholder {
