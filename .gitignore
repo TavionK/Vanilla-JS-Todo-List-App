@@ -1,3 +1,4 @@
 .ds_store
-/.idea
-/dist
+/dist/
+/.idea/
+/node_modules/
