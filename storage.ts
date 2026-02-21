@@ -1,4 +1,6 @@
+// This file manages the local storage and the arrays for completed, deleted, and current todoList items
 import { Todo } from "./types";
+
 // Array of item objects that will be added to and rendered
 export let todoList: Todo[] = [];
 export let completedList: Todo[] = [];

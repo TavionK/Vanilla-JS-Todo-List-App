@@ -1,5 +1,3 @@
-// This file contains the render function
-
 import { getTodoItems } from "./todos";
 import { listArea } from "./elements";
 import { todoList } from "./storage";

@@ -1,5 +1,4 @@
 // This file contains the add, delete, complete and getTodoItems functions
-
 import { Todo } from "./types";
 import { render } from "./render";
 import { addBtn, todoInput } from "./elements";
