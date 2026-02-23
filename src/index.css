@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
     --primary-color: hsl(239, 39%, 21%);
     --accent-color: hsl(359, 38%, 65%);
