@@ -6,22 +6,31 @@
     <link rel="stylesheet" href="src/index.css" />
     <title>Simple Todo List</title>
   </head>
-  <body class="bg-slate-800">
+  <body>
     <main>
-      <div class="card">
-        <h1 class="text-3xl text-white mb-4">
+      <div class="max-w-lg mx-auto py-2 px-4 rounded-md">
+        <h1 class="text-3xl my-4">
           Simple <br />
           Todo List
         </h1>
-        <input
-          required
-          type="text"
-          id="todo-input"
-          aria-label="Input item"
-          placeholder="Add Item"
-        />
-        <button class="btn btn-primary" id="add-btn">Add Item</button>
-        <hr />
+        <div
+          class="flex items-center gap-2 place-content-between bg-gray-700 rounded-md p-2 mb-4"
+        >
+          <input
+            required
+            type="text"
+            id="todo-input"
+            aria-label="Input item"
+            placeholder="Add Item"
+          />
+          <button
+            class="bg-gray-500 border-none px-2 py-1 rounded-md text-white hover:bg-gray-600 ease-in-out duration-200"
+            id="add-btn"
+          >
+            Add Item
+          </button>
+        </div>
+        <hr class="border-gray-700" />
         <div>
           <ul id="list-area"></ul>
         </div>
