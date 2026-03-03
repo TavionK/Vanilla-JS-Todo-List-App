@@ -99,16 +99,16 @@ export function getTodoItems(): string[] {
   if (todoList.length === 0) return [];
   return todoList.map(function (item: Todo): string {
     return `
-    <li class="flex place-content-between items-start gap-2 bg-neutral-700 rounded-md mb-4 p-2">  
+    <li class="flex place-content-between items-start gap-2 bg-gray-700 rounded-md mb-4 p-2">  
         <div class="flex gap-2">
             <button 
                 data-id="${item.id}" 
-                class="flex justify-center items-center cursor-pointer rounded-md size-8 p-2 border-2 border-neutral-600 group hover:bg-green-600 hover:border-green-600 ease-in-out duration-200 btn-complete" 
+                class="flex justify-center items-center cursor-pointer rounded-md size-8 p-2 border-2 border-gray-600 group hover:bg-green-600 hover:border-green-600 ease-in-out duration-200 btn-complete" 
                 id="btn" 
                 aria-label="mark todo item as complete"
             >
                 <svg 
-                    class="size-4 fill-neutral-500 group-hover:fill-white ease-in-out duration-200"
+                    class="size-4 fill-gray-500 group-hover:fill-white ease-in-out duration-200"
                     xmlns="http://www.w3.org/2000/svg" 
                     viewBox="0 0 448 512"
                 >
@@ -125,7 +125,7 @@ export function getTodoItems(): string[] {
             aria-label="delete todo item"
         >
             <svg 
-              class="size-4 fill-neutral-600 group-hover:fill-red-500 group-hover:opacity-75 ease-in-out duration-200" 
+              class="size-4 fill-gray-500 group-hover:fill-red-500 group-hover:opacity-75 ease-in-out duration-200" 
               xmlns="http://www.w3.org/2000/svg" 
               viewBox="0 0 640 640"
             >
