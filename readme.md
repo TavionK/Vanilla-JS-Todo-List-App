@@ -24,6 +24,9 @@ A minimal single page todo list application that lets you add, complete, and del
 4. Click the **trash** button on any item to delete it.
 5. Your list is automatically saved and will be restored when you reopen the app.
 
+## Screenshot
+![Screenshot of the application](images/demo.png)
+
 ## Project Structure
 
 ```
